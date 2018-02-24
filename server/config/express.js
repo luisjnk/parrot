@@ -4,6 +4,9 @@ var express = require('express')
     ,routes = require('../app/routes')
     ,path =  require('path')
     ,bodyParser = require('body-parser');
+  
+var config = require('./config.js');
+require('./mongodb.js')(config.database);
 
 app.set('clientPath', path.join(__dirname, '../..', 'client'));
 console.log(app.get('clientPath'));
