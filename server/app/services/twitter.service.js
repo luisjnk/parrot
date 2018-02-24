@@ -1,6 +1,7 @@
 var Twit = require('twit');
 var config = require('../../config/twitterConfig')
 var Promise = require("bluebird");
+var tweetsHepler = require('../helpers/tweets.helper');
 
 var T = new Twit(config);
 
@@ -11,8 +12,8 @@ class TwitterService {
 
     getTweetsByTag(hastag) {
         return new Promise(function (resolve, reject) {
-            let params = {
-                q: hastag,
+            let params = {  
+                q: '#' + hastag,
                 count: 100
             };
 
@@ -21,10 +22,10 @@ class TwitterService {
                     if(err) {
                         reject(err)
                     }
-
+                    tweetsHepler = new tweetsHepler();
+                   let tweets = tweetsHepler.mappingTweets(data);
                     resolve({
-                        data : data,
-                        response : response
+                        data : tweets
                     });
                 })
         })
