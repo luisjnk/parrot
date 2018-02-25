@@ -1,35 +1,42 @@
-var TweetsSchema = require('../models/tweets.model');
-var mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
+var tweetsHepler = require('../helpers/tweets.helper');
 
 class TweetsESRepository {
-    constructor() {
+  
+  static  save(tweets) {
+        return new Promise(function (resolve, reject) {
+            let body = tweetsHepler.mappingToBulkInsert(tweets);
+            global.client.bulk({
+                body: body
+              }, function (err, resp) {
+                  if(err) {
+                      reject(err);
+                  }
+                  resolve(resp);
+              });
 
+        });
     }
 
-    save(tweets) {
+   static search(text) {
         return new Promise(function (resolve, reject) {
-            
-            let tweetsSchema = new TweetsSchema({
-                tweets: tweets.data
-            })
-            console.log(tweetsSchema)
+            let body = tweetsHepler.mappingToESSearch(text)
 
-            tweetsSchema
-                .save()
-                .then(function (res) {
-                    resolve(res)
-                })
-                .catch(function (err) {
-                    console.log('err', err)
+            global.client.msearch({
+                body: body
+              }, function (err, resp) {
+                if(err) {
                     reject(err);
-                })
-
+                }
+                resolve(tweetsHepler.mappingESSearchResult(resp))
+                //resolve(resp);
+            });
         });
     }
     
 
+    
+
 }
 
-module.exports = TweetsRepository;
+module.exports = TweetsESRepository;
 

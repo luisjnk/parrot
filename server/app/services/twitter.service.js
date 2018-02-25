@@ -5,12 +5,10 @@ var tweetsHepler = require('../helpers/tweets.helper');
 var T = new Twit(config.config.twitterSevice);
 
 class TwitterService {
-    constructor() {
-
-    }
-
-    getTweetsByTag(hastag) {
+   
+    static getTweetsByTag(hastag) {
         return new Promise(function (resolve, reject) {
+          
             let params = {  
                 q: '#' + hastag,
                 count: 100
@@ -21,8 +19,7 @@ class TwitterService {
                     if(err) {
                         reject(err)
                     }
-                    tweetsHepler = new tweetsHepler();
-                   let tweets = tweetsHepler.mappingTweets(data);
+                    let tweets = tweetsHepler.mappingTweets(data);
                     resolve({
                         data : tweets
                     });

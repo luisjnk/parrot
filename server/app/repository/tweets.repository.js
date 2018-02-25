@@ -3,17 +3,13 @@ var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
 class TweetsRepository {
-    constructor() {
 
-    }
-
-    save(tweets) {
+   static save(tweets) {
         return new Promise(function (resolve, reject) {
             
             let tweetsSchema = new TweetsSchema({
                 tweets: tweets.data
             })
-            console.log(tweetsSchema)
 
             tweetsSchema
                 .save()

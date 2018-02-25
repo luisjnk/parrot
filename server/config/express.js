@@ -7,6 +7,8 @@ var express = require('express')
   
 var config = require('./config.js');
 require('./mongodb.js')(config.config.mongodDB.database);
+var esClient = require('./esconnect.js')
+global.client = esClient;
 
 app.set('clientPath', path.join(__dirname, '../..', 'client'));
 app.use(express.static(app.get('clientPath')));

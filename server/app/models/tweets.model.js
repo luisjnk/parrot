@@ -3,7 +3,10 @@ var mongoose = require('mongoose'),
 
 var tweetsSchema = new Schema({
     tweets : [ {
-        text: {type:String}
+        text: {type: String},
+        id: { type: Number},
+        id_str : {type : String},  
+        hastags : {type : Array}
     }
 ]
 });
