@@ -6,10 +6,9 @@ var express = require('express')
     ,bodyParser = require('body-parser');
   
 var config = require('./config.js');
-require('./mongodb.js')(config.database);
+require('./mongodb.js')(config.config.mongodDB.database);
 
 app.set('clientPath', path.join(__dirname, '../..', 'client'));
-console.log(app.get('clientPath'));
 app.use(express.static(app.get('clientPath')));
 app.use(bodyParser.json());
 

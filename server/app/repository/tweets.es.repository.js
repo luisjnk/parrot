@@ -2,7 +2,7 @@ var TweetsSchema = require('../models/tweets.model');
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-class TweetsRepository {
+class TweetsESRepository {
     constructor() {
 
     }

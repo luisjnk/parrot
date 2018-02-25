@@ -1,9 +1,8 @@
 var Twit = require('twit');
-var config = require('../../config/twitterConfig')
+var config = require('../../config/config')
 var Promise = require("bluebird");
 var tweetsHepler = require('../helpers/tweets.helper');
-
-var T = new Twit(config);
+var T = new Twit(config.config.twitterSevice);
 
 class TwitterService {
     constructor() {
