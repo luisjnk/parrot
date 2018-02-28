@@ -1,4 +1,3 @@
-/* Código simplório, apenas para fornecer o serviço para a aplicação */
 var twitterService = require('../services/twitter.service');
 var twitterRepository = require('../repository/tweets.repository');
 var tweetsESRepository = require('../repository/tweets.es.repository');
@@ -12,18 +11,19 @@ twitter.getTweetsByHastag = function (req, res) {
     twitterService
         .getTweetsByTag(hastag)
         .then(tweets => {
+            let response = {}
+
             Promise.all(
                 [tweetsESRepository.save(tweets),
                 twitterRepository.save(tweets)]
             ).spread((esresponse, databaseres) => {
-                const response = {
-                    "esresponse": esresponse,
-                    "databaseres": databaseres
-                }
+                response.esresponse = esresponse
+                response.databaseres = databaseres
                 res.status(200).send(response);
             }).catch(err => {
-                res.status(400).send(err);
+                response.err = err;
             })
+
         }).catch(err => {
             res.status(400).send(err);
         })
@@ -42,4 +42,19 @@ twitter.getTweetsByTxt = function (req, res) {
         })
 }
 
+twitter.saveTweets = function (tweets) {
+    console.log('aquiw')
+    Promise.all(
+        [tweetsESRepository.save(tweets),
+        twitterRepository.save(tweets)]
+    ).spread((esresponse, databaseres) => {
+        const response = {
+            "esresponse": esresponse,
+            "databaseres": databaseres
+        }
+        return response;
+    }).catch(err => {
+        return err;
+    })
+}
 module.exports = twitter;

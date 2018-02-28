@@ -5,6 +5,7 @@ class TweetsESRepository {
   static  save(tweets) {
         return new Promise(function (resolve, reject) {
             let body = tweetsHepler.mappingToBulkInsert(tweets);
+            resolve(body)
             global.client.bulk({
                 body: body
               }, function (err, resp) {

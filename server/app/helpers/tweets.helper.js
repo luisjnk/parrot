@@ -20,7 +20,7 @@ class TweetsHelper {
    static mappingToBulkInsert(tweets) {
         
         let tweetsForEs = []
-        
+
         tweets.data.forEach(element => {
             tweetsForEs .push ({
                 "create" : {
