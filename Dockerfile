@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN npm install\
- server/npm install\
+    server/npm install\
  client/npm install\
  client/browserify app.js -o dist/bundle.js
 
