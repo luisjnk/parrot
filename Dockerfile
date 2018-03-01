@@ -10,8 +10,11 @@ COPY package*.json ./
 
 RUN npm install\
     server/npm install\
- client/npm install\
- client/browserify app.js -o dist/bundle.js
+    client/npm install\
+    client/browserify app.js -o dist/bundle.js\
+    docker-compose up
+ 
+ 
 
 # If you are building your code for production
 # RUN npm install --only=production
