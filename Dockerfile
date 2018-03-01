@@ -9,9 +9,9 @@ WORKDIR /root/app/parrot
 COPY package*.json ./
 
 RUN npm install 
-RUN cd server && npm install 
-RUN cd client && npm install 
-RUN cd client && browserify app.js -o dist/bundle.js 
+RUN npm buildClient
+RUN npm buildServer
+RUN npm browserifyClient
 RUN docker-compose up
 
 # If you are building your code for production
