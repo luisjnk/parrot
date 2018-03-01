@@ -1,7 +1,7 @@
 FROM node:carbon
 
 # Create app directory
-WORKDIR /root/src/parrot
+WORKDIR /root/app/parrot
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -18,8 +18,8 @@ RUN docker-compose up
 # RUN npm install --only=production
 
 # Bundle app source
-COPY ./package.json /root/src/parrot
+COPY ./package.json /root/app/parrot
 
-ADD . /root/src/parrot
+ADD . /root/app/parrot
 
 CMD [ "npm", "start" ]
