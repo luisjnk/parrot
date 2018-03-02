@@ -5,8 +5,8 @@ var Promise = require("bluebird");
 class TweetsController {
 
     static getTweetsByHastag() {
-        //const hastag = 'meinunterricht';
-        const hastag = 'gameofthrones';
+        const hastag = 'meinunterricht';
+        //const hastag = 'gameofthrones';
         tweetsService
             .getTweetsByHastag(hastag)
             .then(tweets => {

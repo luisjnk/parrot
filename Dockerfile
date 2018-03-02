@@ -1,3 +1,4 @@
+
 FROM node:carbon
 
 RUN mkdir  /root/project/
@@ -11,4 +12,3 @@ RUN npm install && \
       cd ../server && npm install
 
 ENTRYPOINT ["/root/project/entrypoint.sh"]
-root@debian-s-2vcpu-4gb-fra1-01:~/app/parrot#
