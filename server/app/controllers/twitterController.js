@@ -43,7 +43,6 @@ twitter.getTweetsByTxt = function (req, res) {
 }
 
 twitter.saveTweets = function (tweets) {
-    console.log('aquiw')
     Promise.all(
         [tweetsESRepository.save(tweets),
         twitterRepository.save(tweets)]
