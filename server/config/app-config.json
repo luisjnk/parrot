@@ -8,11 +8,11 @@
             "timeout_ms": "60000"
         },
         "elasticSearch" : {
-            "host": "localhost:9200",
+            "host": "",
             "log": "trace"
         },
         "mongodDB" : {
-            "database":"mongodb://luisjnk:lnn4138@ds161551.mlab.com:61551/galactus"
+            "database":""
         }
     },
     "production" : {
@@ -24,11 +24,11 @@
             "timeout_ms": "60000"
         },
         "elasticSearch" : {
-            "host": "localhost:9200",
+            "host": "",
             "log": "trace"
         },
         "mongodDB" : {
-            "database":"mongodb://luisjnk:lnn4138@ds161551.mlab.com:61551/galactus"
+            "database":""
         }
     }
 }

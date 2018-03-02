@@ -1,9 +1,9 @@
 {
     "development" : {
-        "apiUrl" :"http://localhost:3000/"
+        "apiUrl" :""
     },
     "production" : {
-       "apiUrl" :"http://localhost:3000/"
+       "apiUrl" :""
 
     }
 }
