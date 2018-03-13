@@ -11,4 +11,4 @@ RUN npm install && \
       cd client && npm install && \
       cd ../server && npm install
 
-ENTRYPOINT ["/root/project/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
